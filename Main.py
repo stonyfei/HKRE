@@ -1,19 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-__author__ = 'Stony'
 
 import urllib3
 from bs4 import BeautifulSoup
 http = urllib3.PoolManager()
 url = http.request('GET', 'hk.centadata.com/ccichart/estate_info.aspx?id=000010')
 
-
-'''
-print(url.data)
-'''
 import re
 import codecs
-
 
 soup = BeautifulSoup(url.data)
 estatename = soup.find(id=re.compile("EstateName")).get_text(strip=True)
